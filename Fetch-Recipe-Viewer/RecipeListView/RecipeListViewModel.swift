@@ -21,7 +21,7 @@ class RecipeListViewModel: ObservableObject {
         do {
             try await recipeListService.fetchRecipeList()
         } catch {
-            print("There was an error: \(error)")
+            print(Constants.Messages.errorMessage(withError: error))
         }
     }
     

@@ -19,11 +19,27 @@ struct Constants {
         static let mainImageSize: CGFloat = 100
         static let smallFontSize: CGFloat = 10
         static let mediumFontSize: CGFloat = 12
-        static let smallSpacing: CGFloat = 2
+        static let smallSpacing: CGFloat = 4
         static let mediumSpacing: CGFloat = 8
-        static let minimunBioScale: CGFloat = 0.3
+        static let largeSpacing: CGFloat = 16
+        static let minimumScale: CGFloat = 0.3
         static let roundRectWidth: CGFloat = 20
         static let roundRectHeight: CGFloat = 10
+    }
+    
+    struct Messages {
+        static let emptyRecipeListStateMessage = "There are no recipes available. Pull list down to refresh."
+        static func errorMessage(withError error: Error) -> String {
+            return "There was an error: \(error)"
+        }
+    }
+    
+    struct Strings {
+        static func cuisine(withValue val: String) -> String {
+            return "Cuisine: \(val)"
+        }
+        static let website = "Website"
+        static let video = "Video"
     }
     
 }

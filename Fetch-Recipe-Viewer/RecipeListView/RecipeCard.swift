@@ -15,7 +15,6 @@ struct RecipeCard: View {
         
         HStack {
             
-            // Custom Image Cache View
             AnyView(ImageCache.showImage(withURL: recipe.photo_url_small ?? ""))
                 .frame(width: Constants.EmployeeCardSettings.mainImageSize, height: Constants.EmployeeCardSettings.mainImageSize)
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.EmployeeCardSettings.roundRectWidth, height: Constants.EmployeeCardSettings.roundRectHeight)))
@@ -25,12 +24,26 @@ struct RecipeCard: View {
             VStack(alignment: .leading, spacing: Constants.EmployeeCardSettings.mediumSpacing) {
                 
                 Text(recipe.name)
-                Text("Cuisine: \(recipe.cuisine)")
+                    .minimumScaleFactor(Constants.EmployeeCardSettings.minimumScale)
+                
+                Text(Constants.Strings.cuisine(withValue: recipe.cuisine))
                     .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
-                Text("Website: \(recipe.source_url ?? "")")
-                    .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
-                Text("YouTube: \(recipe.youtube_url ?? "")")
-                    .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                
+                HStack(spacing: Constants.EmployeeCardSettings.largeSpacing) {
+                    
+                    if let sourceUrl = recipe.source_url {
+                        Link(Constants.Strings.website, destination: URL(string: sourceUrl)!)
+                            .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                            .underline()
+                    }
+                    
+                    if let youTube = recipe.youtube_url {
+                        Link(Constants.Strings.video, destination: URL(string: youTube)!)
+                            .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                            .underline()
+                    }
+                    
+                }
                 
             }
             .frame(minWidth: .zero, maxWidth: .infinity, alignment: .leading)

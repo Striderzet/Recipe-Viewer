@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // Dependency Injected Services
     @StateObject var recipeListService = RecipeListService(networkManager: NetworkManager())
     
     var body: some View {

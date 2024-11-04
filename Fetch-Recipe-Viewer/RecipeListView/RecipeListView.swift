@@ -21,7 +21,7 @@ struct RecipeListView: View {
                         RecipeCard(recipe: recipe)
                     }
                 } else {
-                    Text("There are no recipes available. Pull list down to refresh.")
+                    Text(Constants.Messages.emptyRecipeListStateMessage)
                         .padding()
                 }
             }
