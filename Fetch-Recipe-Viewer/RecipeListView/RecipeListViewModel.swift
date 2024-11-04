@@ -11,6 +11,7 @@ import SwiftUI
 class RecipeListViewModel: ObservableObject {
     
     @Published var recipeListService: RecipeListService
+    @Published var networkError = ""
     
     init(recipeListService: RecipeListService) {
         self.recipeListService = recipeListService
@@ -22,6 +23,7 @@ class RecipeListViewModel: ObservableObject {
             try await recipeListService.fetchRecipeList()
         } catch {
             print(Constants.Messages.errorMessage(withError: error))
+            networkError = error.localizedDescription
         }
     }
     

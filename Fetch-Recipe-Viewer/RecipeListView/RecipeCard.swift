@@ -16,30 +16,30 @@ struct RecipeCard: View {
         HStack {
             
             AnyView(ImageCache.showImage(withURL: recipe.photo_url_small ?? ""))
-                .frame(width: Constants.EmployeeCardSettings.mainImageSize, height: Constants.EmployeeCardSettings.mainImageSize)
-                .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.EmployeeCardSettings.roundRectWidth, height: Constants.EmployeeCardSettings.roundRectHeight)))
+                .frame(width: Constants.RecipeCardSettings.mainImageSize, height: Constants.RecipeCardSettings.mainImageSize)
+                .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.RecipeCardSettings.roundRectWidth, height: Constants.RecipeCardSettings.roundRectHeight)))
             
             Spacer()
             
-            VStack(alignment: .leading, spacing: Constants.EmployeeCardSettings.mediumSpacing) {
+            VStack(alignment: .leading, spacing: Constants.RecipeCardSettings.mediumSpacing) {
                 
                 Text(recipe.name)
-                    .minimumScaleFactor(Constants.EmployeeCardSettings.minimumScale)
+                    .minimumScaleFactor(Constants.RecipeCardSettings.minimumScale)
                 
                 Text(Constants.Strings.cuisine(withValue: recipe.cuisine))
-                    .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                    .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
                 
-                HStack(spacing: Constants.EmployeeCardSettings.largeSpacing) {
+                HStack(spacing: Constants.RecipeCardSettings.largeSpacing) {
                     
                     if let sourceUrl = recipe.source_url {
                         Link(Constants.Strings.website, destination: URL(string: sourceUrl)!)
-                            .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                            .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
                             .underline()
                     }
                     
                     if let youTube = recipe.youtube_url {
                         Link(Constants.Strings.video, destination: URL(string: youTube)!)
-                            .font(.system(size: Constants.EmployeeCardSettings.mediumFontSize))
+                            .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
                             .underline()
                     }
                     

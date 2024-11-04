@@ -15,7 +15,7 @@ struct Constants {
         case recipesEmptyJson = "https://d3jbb8n5wk0qxi.cloudfront.net/recipes-empty.json"
     }
     
-    struct EmployeeCardSettings {
+    struct RecipeCardSettings {
         static let mainImageSize: CGFloat = 100
         static let smallFontSize: CGFloat = 10
         static let mediumFontSize: CGFloat = 12
