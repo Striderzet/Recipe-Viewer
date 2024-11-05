@@ -12,6 +12,7 @@ class RecipeListViewModel: ObservableObject {
     
     @Published var recipeListService: RecipeListService
     @Published var networkError = ""
+    @Published var presentNetworkError = false
     
     init(recipeListService: RecipeListService) {
         self.recipeListService = recipeListService
@@ -24,13 +25,16 @@ class RecipeListViewModel: ObservableObject {
         } catch {
             print(Constants.Messages.errorMessage(withError: error))
             networkError = error.localizedDescription
+            delayErrorMessage()
         }
     }
     
-    @MainActor
-    func refreshRecipeList() async {
-        recipeListService.recipeList = nil
-        await setRecipeList()
+    /// This is needed to have a smooth pulldown animation when the alert gets presented to prevent sticking
+    private func delayErrorMessage() {
+        let delayTime: DispatchTime = .now()+0.5
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: {
+            self.presentNetworkError = true
+        })
     }
     
 }

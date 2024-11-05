@@ -32,6 +32,7 @@ struct Constants {
         static func errorMessage(withError error: Error) -> String {
             return "There was an error: \(error)"
         }
+        static let dataError = "There was an error with the data"
     }
     
     struct Strings {
@@ -40,6 +41,12 @@ struct Constants {
         }
         static let website = "Website"
         static let video = "Video"
+        static let errorString = "Error"
+        static let ok = "OK"
+    }
+    
+    struct Values {
+        static let emptyStateTopPadding: CGFloat = 150
     }
     
 }

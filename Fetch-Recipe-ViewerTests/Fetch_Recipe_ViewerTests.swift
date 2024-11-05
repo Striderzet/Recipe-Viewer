@@ -25,19 +25,6 @@ final class Fetch_Recipe_ViewerTests: XCTestCase {
         XCTAssertTrue(viewModel.recipeListService.recipeList?.recipes[3].cuisine == "American")
     }
     
-    func testRecipeListViewModelRefreshPopulation() async throws {
-        guard let requestResponse = HTTPURLResponse(url: URL(string: "test")!, statusCode: 200, httpVersion: "", headerFields: [:]) else { return }
-        let networkManager = makeNetworkManagerSUT(response: requestResponse, recipeListModel: mockRecipeList)
-        let recipeListService = RecipeListService(networkManager: networkManager)
-        let viewModel = RecipeListViewModel(recipeListService: recipeListService)
-        await viewModel.refreshRecipeList()
-        XCTAssertTrue(!(viewModel.recipeListService.recipeList?.recipes.isEmpty ?? true))
-        XCTAssertTrue(viewModel.recipeListService.recipeList?.recipes[0].name == "Volcano Tornado Roll")
-        XCTAssertTrue(viewModel.recipeListService.recipeList?.recipes[1].name == "Quesadilla con Oaxaca")
-        XCTAssertTrue(viewModel.recipeListService.recipeList?.recipes[2].name == "Marinaria Pizza")
-        XCTAssertTrue(viewModel.recipeListService.recipeList?.recipes[3].name == "Franks Hot Buffalo Wings")
-    }
-    
     func testRecipeListViewModelFetchEmpty() async throws {
         guard let requestResponse = HTTPURLResponse(url: URL(string: "test")!, statusCode: 200, httpVersion: "", headerFields: [:]) else { return }
         let nilRecipeList: RecipeListModel? = nil

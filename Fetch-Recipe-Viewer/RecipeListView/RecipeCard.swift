@@ -30,19 +30,8 @@ struct RecipeCard: View {
                     .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
                 
                 HStack(spacing: Constants.RecipeCardSettings.largeSpacing) {
-                    
-                    if let sourceUrl = recipe.source_url {
-                        Link(Constants.Strings.website, destination: URL(string: sourceUrl)!)
-                            .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
-                            .underline()
-                    }
-                    
-                    if let youTube = recipe.youtube_url {
-                        Link(Constants.Strings.video, destination: URL(string: youTube)!)
-                            .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
-                            .underline()
-                    }
-                    
+                    RecipeLinkButton(title: Constants.Strings.website, urlString: recipe.source_url)
+                    RecipeLinkButton(title: Constants.Strings.video, urlString: recipe.youtube_url)
                 }
                 
             }
@@ -55,6 +44,22 @@ struct RecipeCard: View {
         
     }
     
+}
+
+// MARK: - Private Components
+
+fileprivate struct RecipeLinkButton: View {
+    let title: String
+    let urlString: String?
+    var body: some View {
+        if let url = urlString {
+            Link(title, destination: URL(string: url)!)
+                .foregroundStyle(.blue)
+                .font(.system(size: Constants.RecipeCardSettings.mediumFontSize))
+                .underline()
+                .buttonStyle(.plain)
+        }
+    }
 }
 
 #Preview {
