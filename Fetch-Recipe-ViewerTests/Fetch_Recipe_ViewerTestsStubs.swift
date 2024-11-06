@@ -8,7 +8,7 @@
 import Foundation
 @testable import Fetch_Recipe_Viewer
 
-struct StubNetworkManager: NetworkManagerProtocol {
+struct StubNetworkManagerForRecipeList: NetworkManagerProtocol {
     
     var response: HTTPURLResponse
     var recipeListModel: RecipeListModel?

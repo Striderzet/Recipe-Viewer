@@ -141,8 +141,8 @@ final class Fetch_Recipe_ViewerTests: XCTestCase {
     func makeNetworkManagerSUT(response: HTTPURLResponse,
                                recipeListModel: RecipeListModel? = nil) -> NetworkManagerProtocol {
         
-        return StubNetworkManager(response: response,
-                                  recipeListModel: recipeListModel)
+        return StubNetworkManagerForRecipeList(response: response,
+                                               recipeListModel: recipeListModel)
         
     }
     

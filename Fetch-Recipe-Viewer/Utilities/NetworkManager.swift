@@ -87,8 +87,4 @@ public enum NetworkError: Error, LocalizedError {
     case requestEntityTooLarge
     case unprocessableEntity
     case http(httpResponse: HTTPURLResponse, data: Data)
-    case invalidResponse(Data)
-    case deleteOperationFailed(String)
-    case network(URLError)
-    case unknown(Error?)
 }
