@@ -11,10 +11,10 @@ About 4.5 hours
 Instead of using a external framework for image caching, I created a custom cache that utilized SwiftUI's AsyncImage. This saved on significant built time and gave more to customization of caching in the app, and could be used as a template to use for other objects.
 
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
-I had to implement a method that delayed an error message alert from being shown after malformed data is fetched. It needed to be done done so the pulldown animation does not get stuck. This did not break the app, but did not look clean for the UI, so it had to be fixed this was for now.
+I had to implement a method that delayed an error message alert from being shown after malformed data is fetched. It needed to be done done so the pulldown animation does not get stuck. This did not break the app, but did not look clean for the UI, so it had to be fixed this way for now.
 
 ### External Code and Dependencies: Did you use any external code, libraries, or dependencies?
-I did not use any external dependancies for this project.
+I used some code snippets that I have had from previous personal projects. I did not use any external dependancies for this project.
 
 ### Additional Information: Is there anything else we should know? Feel free to share any insights or constraints you encountered.
 This is an awesome take home interview project and it is refreshing to see. I feel I was able to exhibit a lot of my SwiftUI knowledge here
